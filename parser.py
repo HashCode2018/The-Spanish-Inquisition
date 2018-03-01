@@ -18,13 +18,6 @@ class Parser:
         F = [Car(i) for i in range(p[0][2])]
         N = [Ride(r[0], r[1], r[2], r[3], r[4], r[5], i-1) for i,r in enumerate(p) if i>0]
 
-        N.sort(key=lambda x: x.f, reverse=True)
+        N.sort(key=lambda x: x.f, reverse=False)
 
         return R, C, F, N, B, T
-
-p = Parser()
-
-r,c,f,n,b,t = p.ParseInput("a_example.in")
-
-for x in n:
-    print(x.f)
