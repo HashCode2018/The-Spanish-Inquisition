@@ -24,6 +24,7 @@ class xParser:
 
     @staticmethod
     def ParseOutput(CarList):
+        open("output.txt", "w").close()
         with open("output.txt", "a") as f:
             for car in CarList:
                 f.write(str(car.history.__len__()) + " " + " ".join(list(map(str, car.history))) + "\n")
