@@ -21,3 +21,8 @@ class xParser:
         N.sort(key=lambda x: x.f, reverse=False)
 
         return R, C, F, N, B, T
+
+    def ParseOutput(CarList):
+        with open("output.txt", "a") as f:
+            for car in CarList:
+                f.write(str(car.history.__len__()) + " ".join(list(map(str, car.history))))
