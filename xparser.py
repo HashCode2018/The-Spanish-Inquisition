@@ -22,6 +22,7 @@ class xParser:
 
         return R, C, F, N, B, T
 
+    @staticmethod
     def ParseOutput(CarList):
         with open("output.txt", "a") as f:
             for car in CarList:
