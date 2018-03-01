@@ -13,14 +13,14 @@ class Car:
         self.time_to_stop = 0
 
     def start(self, ride):
-        history.append(ride.ID)
+        self.history.append(ride.ID)
         self.time_to_stop = ride.distance
         self.busy = True
-        a = ride.x
-        b = ride.y
+        self.a = ride.x
+        self.b = ride.y
 
     def simulation_step(self):
-        if time_to_stop > 0:
+        if self.time_to_stop > 0:
             self.time_to_stop += -1
         else:
             self.busy = False

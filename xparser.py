@@ -1,7 +1,7 @@
 from car import Car
 from ride import Ride
 
-class Parser:
+class xParser:
 
     def __init__(self):
         pass
