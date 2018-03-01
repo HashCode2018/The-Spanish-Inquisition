@@ -8,7 +8,7 @@ class Ride:
     completed = False
     distance = None
 
-    def __init__(self, a, b, x, y, s, f):
+    def __init__(self, a, b, x, y, s, f, ID):
         self.a = a
         self.b = b
         self.x = x
@@ -16,4 +16,5 @@ class Ride:
         self.s = s
         self.f = f
         self.distance = abs(a-x) + abs(b-y)
+        self.id = ID
 
