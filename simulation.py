@@ -11,18 +11,30 @@ class Simulation:
         self.N = len(self.rides)
         self.t = 0
         self.T100 = self.T/100
-        self.lastPercent = 0
+        self.nextStage = 0
 
 
-    def exec(self):
+    def xexec(self):
+        maxCars = 100
+        firstCar = 0
+        self.T = 100
         for t in range(self.T):
+            if t > 2000:
+                break
+            if t > self.nextStage:
+                self.nextStage += self.T100
+                print(str(t)+" from "+str(self.T))
+
 
             self.t = t
             # Find a car for a ride
             if len(self.rides) == 0:
                 break
             for ride in self.rides:
-                car = self.find_my_car(ride)
+                car = self.find_my_car(ride, firstCar, maxCars)
+                firstCar += maxCars
+                if firstCar >= len(self.cars)-maxCars:
+                    firstCar = 0
                 if car == None:
                     continue
 
@@ -37,7 +49,7 @@ class Simulation:
     def get_distance(self, car, ride):
         return abs(car.a-ride.a)+abs(car.b-ride.b)
 
-    def find_my_car(self, ride):
+    def find_my_car(self, ride, firstCar, maxCars):
         MinDist = self.R + self.C
 
         MinTimeToFinal = ride.f - self.t
@@ -46,6 +58,7 @@ class Simulation:
 
 
         for i,car in enumerate(self.cars):
+        #for i in range(firstCar, firstCar+maxCars):
 
             if car.busy:
                 continue
@@ -65,5 +78,5 @@ class Simulation:
         return self.cars[car_index]
 
 
-s = Simulation("c_no_hurry.in")
-s.exec()
+s = Simulation("e_high_bonus.in")
+s.xexec()
