@@ -12,10 +12,15 @@ class Simulation:
 
     def exec(self):
         for t in range(self.T):
+            # Find a car for a ride
+            if len(self.rides) == 0:
+                break
             for ride in self.rides:
                 car = find_my_car(ride)
-                car.busy = True
-
+                car.start(ride)
+                self.rides.remove(ride)
+            for car in self.cars:
+                car.simulation_step()
 
 
     def get_distance(self, car, ride):

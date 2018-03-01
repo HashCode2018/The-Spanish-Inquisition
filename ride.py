@@ -1,12 +1,4 @@
 class Ride:
-    a = None
-    b = None
-    x = None
-    y = None
-    s = None
-    f = None
-    completed = False
-    distance = None
 
     def __init__(self, a, b, x, y, s, f, ID):
         self.a = a
