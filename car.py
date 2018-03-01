@@ -4,3 +4,4 @@ class Car:
         self.b = 0
         self.busy = False
         self.current_ride = None
+        self.history = []
