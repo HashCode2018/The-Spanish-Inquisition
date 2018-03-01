@@ -19,6 +19,9 @@ class Simulation:
                 break
             for ride in self.rides:
                 car = self.find_my_car(ride)
+                if car == None:
+                    continue
+
                 car.start(ride)
                 self.rides.remove(ride)
             for car in self.cars:
@@ -29,13 +32,11 @@ class Simulation:
         return abs(car.a-ride.a)+abs(car.b-ride.b)
 
     def find_my_car(self, ride):
-        distances = []
-        res = None
         MinDist = self.R + self.C
 
         MinTimeToFinal = ride.f - self.t
 
-        car_index = 0
+        car_index = None
 
 
         for i,car in enumerate(self.cars):
@@ -53,7 +54,8 @@ class Simulation:
                 MinDist = dist
 
 
-
+        if car_index == None:
+            return None
         return self.cars[car_index]
 
 
