@@ -10,9 +10,13 @@ class Simulation:
         self.F = len(self.cars)
         self.N = len(self.rides)
         self.t = 0
+        self.T100 = self.T/100
+        self.lastPercent = 0
+
 
     def exec(self):
         for t in range(self.T):
+
             self.t = t
             # Find a car for a ride
             if len(self.rides) == 0:
@@ -26,6 +30,8 @@ class Simulation:
                 self.rides.remove(ride)
             for car in self.cars:
                 car.simulation_step()
+
+        xParser.ParseOutput(self.cars)
 
 
     def get_distance(self, car, ride):
@@ -59,5 +65,5 @@ class Simulation:
         return self.cars[car_index]
 
 
-s = Simulation("a_example.in")
+s = Simulation("c_no_hurry.in")
 s.exec()
